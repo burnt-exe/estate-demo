@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Community Portal • Demo</title>
+  <meta name="description" content="Resident and Body Corporate portal demo: announcements, tickets, bookings, documents." />
+  <link rel="manifest" href="./pwa/manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <div>
+          <div id="complexName">Complex</div>
+          <div class="small" id="complexMeta"></div>
+        </div>
+      </div>
+
+      <div class="row" style="align-items:center">
+        <select id="complexSelect"></select>
+        <span class="badge" id="adminBadge"></span>
+        <button class="btn secondary" id="btnTheme">Dark Mode</button>
+        <a class="btn" href="./index.html">Exit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container split" style="margin-top:18px">
+    <aside class="card snav">
+      <div class="small">Navigation</div>
+      <div class="hr"></div>
+      <div class="grid" style="gap:8px">
+        <a href="#/dashboard">🏠 Dashboard</a>
+        <a href="#/announcements">📣 Announcements</a>
+        <a href="#/tickets">🧰 Issues & Tickets</a>
+        <a href="#/bookings">📅 Bookings</a>
+        <a href="#/documents">📁 Documents</a>
+        <a href="#/directory">👥 Directory</a>
+        <a href="#/billing">💳 Billing</a>
+        <a href="#/settings">⚙️ Settings</a>
+      </div>
+
+      <div class="hr"></div>
+      <div class="small">Installable PWA + offline ready</div>
+    </aside>
+
+    <main id="main"></main>
+  </div>
+
+  <div class="footer">
+    <div class="container small">© <span id="year"></span> Demo Portal • Static GitHub Pages build</div>
+  </div>
+
+  <script src="./assets/demo-data.js"></script>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
