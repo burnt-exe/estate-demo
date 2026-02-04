@@ -1,0 +1,9 @@
+{
+  "name": "Community Portal Demo",
+  "short_name": "Portal Demo",
+  "start_url": "../app.html#/dashboard",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": []
+}
