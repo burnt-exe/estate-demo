@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Body Corporate Community Platform • Demo</title>
+  <meta name="description" content="A modern community platform for complexes: announcements, issues, bookings, documents, and payments — bundled with Microsoft 365." />
+  <meta property="og:title" content="Community Platform Demo" />
+  <meta property="og:description" content="Turn a complex into a managed community: communication, tickets, bookings, docs, and payments." />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <div>Community Platform</div>
+      </div>
+      <div class="navlinks">
+        <a href="#features">Features</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="#demo">Demo</a>
+      </div>
+      <div class="row">
+        <a class="btn secondary" href="./demo.html">Book a demo</a>
+        <a class="btn" href="./app.html">Enter Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container split">
+      <div>
+        <div class="badge">Built for Body Corporates • Complexes • HOAs</div>
+        <h1 class="h1">One portal that replaces chaos, WhatsApps, and “who’s responsible?”</h1>
+        <p class="p">
+          Announcements, issue tracking, bookings, documents, directory and payments — designed to bundle with
+          Microsoft 365 and a Google Business Profile setup.
+        </p>
+        <div class="row">
+          <a class="btn" href="./app.html">Live demo portal</a>
+          <a class="btn secondary" href="./pricing.html">View pricing</a>
+          <a class="btn ghost" href="#lead">Get proposal</a>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="row">
+          <div class="kpi" style="flex:1">
+            <div class="small">Less noise</div>
+            <div class="h2">+ Governance</div>
+            <div class="p small">Everything is logged, tracked, and auditable.</div>
+          </div>
+          <div class="kpi" style="flex:1">
+            <div class="small">Faster response</div>
+            <div class="h2">+ Trust</div>
+            <div class="p small">Status updates beat silence every time.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h2">60-second pitch flow</div>
+        <div class="p">Use this in meetings. It’s designed to *sell itself*.</div>
+        <div class="hr"></div>
+        <ol class="p">
+          <li>Post an announcement (Admin Mode)</li>
+          <li>Log a ticket and move it to “In Progress”</li>
+          <li>Book the clubhouse</li>
+          <li>Show House Rules + Levy statement</li>
+          <li>Close with bundle: Portal + Microsoft 365 + Support</li>
+        </ol>
+        <div class="hr"></div>
+        <div class="small">Admin pin in demo: <span style="font-family:var(--mono)">3650</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="h2">What residents get</div>
+      <p class="p">Self-service makes governance cheaper and calmer.</p>
+
+      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div class="card feature">
+          <div class="icon">📣</div>
+          <div>
+            <strong>Announcements</strong>
+            <div class="p small">Instant broadcast for water, security, meetings, rules.</div>
+          </div>
+        </div>
+        <div class="card feature">
+          <div class="icon">🧰</div>
+          <div>
+            <strong>Issues & Tickets</strong>
+            <div class="p small">Log, assign, track, close — with history.</div>
+          </div>
+        </div>
+        <div class="card feature">
+          <div class="icon">📅</div>
+          <div>
+            <strong>Bookings</strong>
+            <div class="p small">Clubhouse / braai / meetings without endless calls.</div>
+          </div>
+        </div>
+        <div class="card feature">
+          <div class="icon">📁</div>
+          <div>
+            <strong>Documents</strong>
+            <div class="p small">Rules, minutes, levy statements, compliance docs.</div>
+          </div>
+        </div>
+        <div class="card feature">
+          <div class="icon">👥</div>
+          <div>
+            <strong>Directory</strong>
+            <div class="p small">Residents + trustees with controlled visibility.</div>
+          </div>
+        </div>
+        <div class="card feature">
+          <div class="icon">💳</div>
+          <div>
+            <strong>Payments CTA</strong>
+            <div class="p small">Integrate PayFast/Ozow/EFT reference generation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div id="lead" class="card">
+        <div class="row" style="align-items:center;justify-content:space-between">
+          <div>
+            <div class="h2">Get a proposal</div>
+            <div class="p">Capture leads without a backend (demo). Replace with Microsoft Forms in production.</div>
+          </div>
+          <span class="badge">Lead capture</span>
+        </div>
+
+        <div class="hr"></div>
+
+        <form data-lead-form class="row" style="align-items:flex-end">
+          <div style="flex:1">
+            <div class="small">Name</div>
+            <input class="input" name="name" placeholder="Full name" />
+          </div>
+          <div style="flex:1">
+            <div class="small">Email</div>
+            <input class="input" name="email" placeholder="name@company.com" />
+          </div>
+          <div style="width:240px">
+            <div class="small">Complex / HOA</div>
+            <input class="input" name="complex" placeholder="Complex name" />
+          </div>
+          <button class="btn" type="submit">Send proposal</button>
+        </form>
+      </div>
+
+      <div id="demo" class="footer">
+        <div class="small">Demo portal available at <strong>app.html</strong>. Works on GitHub Pages.</div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./assets/marketing.js"></script>
+</body>
+</html>
