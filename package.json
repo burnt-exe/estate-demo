@@ -1,6 +1,6 @@
 {
   "name": "estate-agentic-discovery",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.49.4",
     "next": "15.2.4",
     "openai": "^4.91.1",
     "react": "19.0.0",
