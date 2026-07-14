@@ -60,7 +60,7 @@ export default function InvitationPage() {
       setBusy(false);
       return;
     }
-    router.push('/?view=discovery&resume=1');
+    router.push('/assessment');
   }
 
   return (
