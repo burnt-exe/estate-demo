@@ -2,8 +2,9 @@ import { createHash } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 
-const AcceptSchema = z.object({ userId: z.string().uuid(), email: z.string().email(), fullName: z.string().min(2).max(120) });
+const AcceptSchema = z.object({ fullName: z.string().min(2).max(120) });
 const hash = (token: string) => createHash('sha256').update(token).digest('hex');
 
 async function findInvitation(token: string) {
@@ -27,19 +28,23 @@ export async function POST(request: NextRequest, context: { params: Promise<{ to
   const parsed = AcceptSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
-  const supabase = createAdminClient();
+  const authClient = await createServerClient();
+  const { data: { user }, error: authError } = await authClient.auth.getUser();
+  if (authError || !user?.email) return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+
+  const admin = createAdminClient();
   const { data: invitation, error } = await findInvitation(token);
   if (error || !invitation || invitation.status !== 'pending' || new Date(invitation.expires_at) <= new Date()) {
     return NextResponse.json({ error: 'Invitation is invalid or expired' }, { status: 404 });
   }
-  if (invitation.email.toLowerCase() !== parsed.data.email.toLowerCase()) {
+  if (invitation.email.toLowerCase() !== user.email.toLowerCase()) {
     return NextResponse.json({ error: 'Invitation email does not match authenticated user' }, { status: 403 });
   }
 
-  const { data: session, error: sessionError } = await supabase.from('assessment_sessions').insert({
+  const { data: session, error: sessionError } = await admin.from('assessment_sessions').insert({
     organisation_id: invitation.organisation_id,
     invitation_id: invitation.id,
-    participant_user_id: parsed.data.userId,
+    participant_user_id: user.id,
     participant_email: invitation.email,
     participant_name: parsed.data.fullName,
     participant_role: invitation.role,
@@ -49,8 +54,7 @@ export async function POST(request: NextRequest, context: { params: Promise<{ to
   }).select('*').single();
   if (sessionError) return NextResponse.json({ error: 'Could not create assessment session' }, { status: 500 });
 
-  await supabase.from('stakeholder_invitations').update({ status: 'accepted', accepted_by: parsed.data.userId, accepted_at: new Date().toISOString() }).eq('id', invitation.id);
-  await supabase.from('assessment_events').insert({ session_id: session.id, actor_user_id: parsed.data.userId, event_type: 'invitation_accepted' });
-
+  await admin.from('stakeholder_invitations').update({ status: 'accepted', accepted_by: user.id, accepted_at: new Date().toISOString() }).eq('id', invitation.id);
+  await admin.from('assessment_events').insert({ session_id: session.id, actor_user_id: user.id, event_type: 'invitation_accepted' });
   return NextResponse.json({ session }, { status: 201 });
 }
